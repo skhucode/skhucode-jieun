@@ -1,23 +1,25 @@
 package class07;
 
-/*Æ®¸®ÀÇ ºÎ¸ğ Ã£±â 
+import java.util.*;
 
-¹®Á¦
+/*íŠ¸ë¦¬ì˜ ë¶€ëª¨ ì°¾ê¸° 
+
+ë¬¸ì œ
  
-·çÆ® ¾ø´Â Æ®¸®°¡ ÁÖ¾îÁø´Ù. ÀÌ ¶§, Æ®¸®ÀÇ ·çÆ®¸¦ 1ÀÌ¶ó°í Á¤ÇßÀ» ¶§, °¢ ³ëµåÀÇ ºÎ¸ğ¸¦ ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+ë£¨íŠ¸ ì—†ëŠ” íŠ¸ë¦¬ê°€ ì£¼ì–´ì§„ë‹¤. ì´ ë•Œ, íŠ¸ë¦¬ì˜ ë£¨íŠ¸ë¥¼ 1ì´ë¼ê³  ì •í–ˆì„ ë•Œ, ê° ë…¸ë“œì˜ ë¶€ëª¨ë¥¼ êµ¬í•˜ëŠ” í”„ë¡œê·¸ë¨ì„ ì‘ì„±í•˜ì‹œì˜¤.
 
-ÀÔ·Â
- 
-
-Ã¹Â° ÁÙ¿¡ ³ëµåÀÇ °³¼ö N (2 ¡Â N ¡Â 100,000)ÀÌ ÁÖ¾îÁø´Ù. µÑÂ° ÁÙºÎÅÍ N-1°³ÀÇ ÁÙ¿¡ Æ®¸® »ó¿¡¼­ ¿¬°áµÈ µÎ Á¤Á¡ÀÌ ÁÖ¾îÁø´Ù.
-
-
-Ãâ·Â
+ì…ë ¥
  
 
-Ã¹Â° ÁÙºÎÅÍ N-1°³ÀÇ ÁÙ¿¡ °¢ ³ëµåÀÇ ºÎ¸ğ ³ëµå ¹øÈ£¸¦ 2¹ø ³ëµåºÎÅÍ ¼ø¼­´ë·Î Ãâ·ÂÇÑ´Ù.
+ì²«ì§¸ ì¤„ì— ë…¸ë“œì˜ ê°œìˆ˜ N (2 â‰¤ N â‰¤ 100,000)ì´ ì£¼ì–´ì§„ë‹¤. ë‘˜ì§¸ ì¤„ë¶€í„° N-1ê°œì˜ ì¤„ì— íŠ¸ë¦¬ ìƒì—ì„œ ì—°ê²°ëœ ë‘ ì •ì ì´ ì£¼ì–´ì§„ë‹¤.
 
-ÀÔ·Â
+
+ì¶œë ¥
+ 
+
+ì²«ì§¸ ì¤„ë¶€í„° N-1ê°œì˜ ì¤„ì— ê° ë…¸ë“œì˜ ë¶€ëª¨ ë…¸ë“œ ë²ˆí˜¸ë¥¼ 2ë²ˆ ë…¸ë“œë¶€í„° ìˆœì„œëŒ€ë¡œ ì¶œë ¥í•œë‹¤.
+
+ì…ë ¥
 
 7
 1 6
@@ -27,7 +29,7 @@ package class07;
 2 4
 4 7
 
-°á°ú
+ê²°ê³¼
 
 4
 6
@@ -36,10 +38,42 @@ package class07;
 1
 4*/
 public class Code_11725 {
-
+// 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		ArrayList<Integer>[] a = (ArrayList<Integer>[]) new ArrayList[n+1];
+		for(int i=1; i<=n; i++) {
+			a[i] = new ArrayList<Integer>();
+		}
+		
+		for(int i=0; i<n-1; i++) {
+			int u = sc.nextInt();
+			int v = sc.nextInt();
+			a[u].add(v);
+			a[v].add(u);
+		}
+		boolean[] check = new boolean[n+1];
+		int[] parent = new int[n+1];
+		Queue<Integer> q = new LinkedList<Integer>();
+		q.add(1);
+		check[1] = true;
+		
+		while(!q.isEmpty()) {
+			int x = q.remove();
+			for(int y : a[x]) {
+				if(check[y] == false) {
+					check[y] =true;
+					parent[y] =x;
+					q.add(y);
+				}
+			}
+		}
+		for(int i=2; i<=n; i++) {
+			System.out.println(parent[i]);
+		}
 	}
 
 }
