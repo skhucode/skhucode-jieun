@@ -1,4 +1,5 @@
 package class06;
+import java.util.*;
 /*
 순열 사이클 
 
@@ -36,10 +37,32 @@ N개의 정수로 이루어진 순열이 주어졌을 때, 순열 사이클의 �
 3
 7*/
 public class Code_10451 {
-
+	public static void dfs(int[] a, boolean[] c, int x) {
+		if(c[x]) return;
+		c[x]= true;
+		dfs(a,c,a[x]);
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t --> 0) {
+			int n = sc.nextInt();
+			int[] a = new int[n+1];
+			boolean[] c = new boolean[n+1];
+			for(int i=1; i<=n; i++) {
+				a[i] = sc.nextInt();
+				c[i] =false;
+			}
+			int ans =0;
+			for(int i=1; i<=n; i++) {
+				if(c[i] == false) {
+					dfs(a,c,i);
+					ans +=1;
+				}
+			}
+			System.out.println(ans);
+		}
 	}
 
 }

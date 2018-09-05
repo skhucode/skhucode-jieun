@@ -28,7 +28,28 @@ package class06;
 출력
 4*/
 public class Code_2331 {
-
+	public static int[] check = new int[1000000];
+	public static int pow(int x, int p) {
+		int ans =1;
+		for(int i=0; i<p; i++) {
+			ans = ans*x;
+		}
+		return ans;
+	}
+	public static int next(int a, int p) {
+		int ans = 0;
+		while(a>0){
+			ans += pow(a%10, p);
+			a /= 10;
+		}
+		return ans;
+	}
+	public static int length(int x, int p,int cnt) {
+		if(check[a] != 0) {
+			return check[a]-1;
+		}
+		check[a] = cnt;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
