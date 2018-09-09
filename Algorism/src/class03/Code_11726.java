@@ -1,52 +1,70 @@
 package class03;
+import java.util.*;
 /*
-2¡¿n Å¸ÀÏ¸µ  
+2Ã—n íƒ€ì¼ë§  
 
-¹®Á¦
+ë¬¸ì œ
  
 
-2¡¿n Å©±âÀÇ Á÷»ç°¢ÇüÀ» 1¡¿2, 2¡¿1 Å¸ÀÏ·Î Ã¤¿ì´Â ¹æ¹ýÀÇ ¼ö¸¦ ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+2Ã—n í¬ê¸°ì˜ ì§ì‚¬ê°í˜•ì„ 1Ã—2, 2Ã—1 íƒ€ì¼ë¡œ ì±„ìš°ëŠ” ë°©ë²•ì˜ ìˆ˜ë¥¼ êµ¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 
-¾Æ·¡ ±×¸²Àº 2¡¿5 Å©±âÀÇ Á÷»ç°¢ÇüÀ» Ã¤¿î ÇÑ °¡Áö ¹æ¹ýÀÇ ¿¹ÀÌ´Ù.
+ì•„ëž˜ ê·¸ë¦¼ì€ 2Ã—5 í¬ê¸°ì˜ ì§ì‚¬ê°í˜•ì„ ì±„ìš´ í•œ ê°€ì§€ ë°©ë²•ì˜ ì˜ˆì´ë‹¤.
 
 
 
-ÀÔ·Â
+ìž…ë ¥
  
 
-Ã¹Â° ÁÙ¿¡ nÀÌ ÁÖ¾îÁø´Ù. (1 ¡Â n ¡Â 1,000)
+ì²«ì§¸ ì¤„ì— nì´ ì£¼ì–´ì§„ë‹¤. (1 â‰¤ n â‰¤ 1,000)
 
 
 
-Ãâ·Â
+ì¶œë ¥
  
 
-Ã¹Â° ÁÙ¿¡ 2¡¿n Å©±âÀÇ Á÷»ç°¢ÇüÀ» Ã¤¿ì´Â ¹æ¹ýÀÇ ¼ö¸¦ 10,007·Î ³ª´« ³ª¸ÓÁö¸¦ Ãâ·ÂÇÑ´Ù.
+ì²«ì§¸ ì¤„ì— 2Ã—n í¬ê¸°ì˜ ì§ì‚¬ê°í˜•ì„ ì±„ìš°ëŠ” ë°©ë²•ì˜ ìˆ˜ë¥¼ 10,007ë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ë¥¼ ì¶œë ¥í•œë‹¤.
 
 
 
-¿¹Á¦ ÀÔ·Â 1 º¹»ç 
+ì˜ˆì œ ìž…ë ¥ 1 ë³µì‚¬ 
  2
 
 
-¿¹Á¦ Ãâ·Â 1 º¹»ç 
+ì˜ˆì œ ì¶œë ¥ 1 ë³µì‚¬ 
  2
 
 
-¿¹Á¦ ÀÔ·Â 2 º¹»ç 
+ì˜ˆì œ ìž…ë ¥ 2 ë³µì‚¬ 
  9
 
 
 
-¿¹Á¦ Ãâ·Â 2 º¹»ç 
+ì˜ˆì œ ì¶œë ¥ 2 ë³µì‚¬ 
  55
 
 */
 public class Code_11726 {
+	  public static void main(String args[]) {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	        Scanner sc = new Scanner(System.in);
 
-	}
+	        int n = sc.nextInt();
 
+	        int[] d = new int[1001];
+
+	        d[0] = 1;
+
+	        d[1] = 1;
+
+	        for (int i=2; i<=n; i++) {
+
+	            d[i] = d[i-1] + d[i-2];
+
+	            d[i] %= 10007;
+
+	        }
+
+	        System.out.println(d[n]);
+
+	    }
 }
