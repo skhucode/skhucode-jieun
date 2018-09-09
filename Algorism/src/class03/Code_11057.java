@@ -1,68 +1,71 @@
 package class03;
+import java.util.*;
+
+import java.math.*;
 /*
-¿À¸£¸· ¼ö 
+ì˜¤ë¥´ë§‰ ìˆ˜ 
 
 
 
 
 
-½Ã°£ Á¦ÇÑ
+ì‹œê°„ ì œí•œ
 
-¸Þ¸ð¸® Á¦ÇÑ
+ë©”ëª¨ë¦¬ ì œí•œ
 
-Á¦Ãâ
+ì œì¶œ
 
-Á¤´ä
+ì •ë‹µ
 
-¸ÂÀº »ç¶÷
+ë§žì€ ì‚¬ëžŒ
 
-Á¤´ä ºñÀ²
-
-
-1 ÃÊ 256 MB 10827 5229 4149 47.982% 
+ì •ë‹µ ë¹„ìœ¨
 
 
+1 ì´ˆ 256 MB 10827 5229 4149 47.982% 
 
 
 
-¹®Á¦
+
+
+ë¬¸ì œ
  
 
-¿À¸£¸· ¼ö´Â ¼öÀÇ ÀÚ¸®°¡ ¿À¸§Â÷¼øÀ» ÀÌ·ç´Â ¼ö¸¦ ¸»ÇÑ´Ù. ÀÌ ¶§, ÀÎÁ¢ÇÑ ¼ö°¡ °°¾Æµµ ¿À¸§Â÷¼øÀ¸·Î Ä£´Ù.
+ì˜¤ë¥´ë§‰ ìˆ˜ëŠ” ìˆ˜ì˜ ìžë¦¬ê°€ ì˜¤ë¦„ì°¨ìˆœì„ ì´ë£¨ëŠ” ìˆ˜ë¥¼ ë§í•œë‹¤. ì´ ë•Œ, ì¸ì ‘í•œ ìˆ˜ê°€ ê°™ì•„ë„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì¹œë‹¤.
 
-¿¹¸¦ µé¾î, 2234¿Í 3678, 11119´Â ¿À¸£¸· ¼öÀÌÁö¸¸, 2232, 3676, 91111Àº ¿À¸£¸· ¼ö°¡ ¾Æ´Ï´Ù.
+ì˜ˆë¥¼ ë“¤ì–´, 2234ì™€ 3678, 11119ëŠ” ì˜¤ë¥´ë§‰ ìˆ˜ì´ì§€ë§Œ, 2232, 3676, 91111ì€ ì˜¤ë¥´ë§‰ ìˆ˜ê°€ ì•„ë‹ˆë‹¤.
 
-¼öÀÇ ±æÀÌ NÀÌ ÁÖ¾îÁ³À» ¶§, ¿À¸£¸· ¼öÀÇ °³¼ö¸¦ ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À. ¼ö´Â 0À¸·Î ½ÃÀÛÇÒ ¼ö ÀÖ´Ù.
-
-
+ìˆ˜ì˜ ê¸¸ì´ Nì´ ì£¼ì–´ì¡Œì„ ë•Œ, ì˜¤ë¥´ë§‰ ìˆ˜ì˜ ê°œìˆ˜ë¥¼ êµ¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤. ìˆ˜ëŠ” 0ìœ¼ë¡œ ì‹œìž‘í•  ìˆ˜ ìžˆë‹¤.
 
 
-ÀÔ·Â
+
+
+ìž…ë ¥
  
 
-Ã¹Â° ÁÙ¿¡ N (1 ¡Â N ¡Â 1,000)ÀÌ ÁÖ¾îÁø´Ù.
+ì²«ì§¸ ì¤„ì— N (1 â‰¤ N â‰¤ 1,000)ì´ ì£¼ì–´ì§„ë‹¤.
 
 
 
 
-Ãâ·Â
+ì¶œë ¥
  
 
-Ã¹Â° ÁÙ¿¡ ±æÀÌ°¡ NÀÎ ¿À¸£¸· ¼öÀÇ °³¼ö¸¦ 10,007·Î ³ª´« ³ª¸ÓÁö¸¦ Ãâ·ÂÇÑ´Ù.
+ì²«ì§¸ ì¤„ì— ê¸¸ì´ê°€ Nì¸ ì˜¤ë¥´ë§‰ ìˆ˜ì˜ ê°œìˆ˜ë¥¼ 10,007ë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ë¥¼ ì¶œë ¥í•œë‹¤.
 
 
 
 
 
 
-¿¹Á¦ ÀÔ·Â 1 º¹»ç 
+ì˜ˆì œ ìž…ë ¥ 1 ë³µì‚¬ 
  1
 
 
 
 
 
-¿¹Á¦ Ãâ·Â 1 º¹»ç 
+ì˜ˆì œ ì¶œë ¥ 1 ë³µì‚¬ 
  10
 
 
@@ -71,14 +74,14 @@ package class03;
 
 
 
-¿¹Á¦ ÀÔ·Â 2 º¹»ç 
+ì˜ˆì œ ìž…ë ¥ 2 ë³µì‚¬ 
  2
 
 
 
 
 
-¿¹Á¦ Ãâ·Â 2 º¹»ç 
+ì˜ˆì œ ì¶œë ¥ 2 ë³µì‚¬ 
  55
 
 
@@ -87,22 +90,62 @@ package class03;
 
 
 
-¿¹Á¦ ÀÔ·Â 3 º¹»ç 
+ì˜ˆì œ ìž…ë ¥ 3 ë³µì‚¬ 
  3
 
 
 
 
 
-¿¹Á¦ Ãâ·Â 3 º¹»ç 
+ì˜ˆì œ ì¶œë ¥ 3 ë³µì‚¬ 
  220
 
 */
 public class Code_11057 {
+	  public static long mod = 10007;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	    public static void main(String args[]) {
 
-	}
+	        Scanner sc = new Scanner(System.in);
+
+	        int n = sc.nextInt();
+
+	        long[][] d = new long[n+1][10];
+
+	        for (int i=0; i<=9; i++) {
+
+	            d[1][i] = 1;
+
+	        }
+
+	        for (int i=2; i<=n; i++) {
+
+	            for (int j=0; j<=9; j++) {
+
+	                for (int k=0; k<=j; k++) {
+
+	                    d[i][j] += d[i-1][k];
+
+	                    d[i][j] %= mod;
+
+	                }
+
+	            }
+
+	        }
+
+	        long ans = 0;
+
+	        for (int i=0; i<10; i++) {
+
+	            ans += d[n][i];
+
+	        }
+
+	        ans %= mod;
+
+	        System.out.println(ans);
+
+	    }
 
 }
