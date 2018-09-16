@@ -1,4 +1,5 @@
 package class01;
+import java.util.*;
 /*
 수 묶기 
 
@@ -81,5 +82,50 @@ package class01;
 (-1)+1+(2*3)=6
 */
 public class Code_1744 {
+
+	public static void main(String[] args) {
+			// TODO Auto-generated method stub
+	
+			Scanner sc = new Scanner(System.in);
+			int n =sc.nextInt();
+			//plus 부분과 minus 부분을 ArrayList로 각각 분리하여 저장한다.
+			ArrayList<Integer> plus = new ArrayList<Integer>();
+			ArrayList<Integer> minus = new ArrayList<Integer>();
+			int zero = 0;
+			int one =0;
+			//plus와 minus를 나눠 각각의 배열에 할당한다. 0보다 크면 plus 작으면 minus
+			for(int i=0; i<n; i++) {
+				int x = sc.nextInt();
+				if(x == 1) {
+					one += 1;
+				}else if(x>0) {
+					plus.add(x);
+				}else if(x<0) {
+					minus.add(x);
+				}else {
+					zero +=1;
+				}
+			}
+			Collections.sort(plus);
+			Collections.sort(minus);
+			Collections.reverse(plus);
+			if(plus.size() % 2 ==1) {
+				plus.add(1);
+			}
+			if(minus.size() % 2 ==1) {
+				minus.add(zero > 0 ? 0 : 1);
+			}
+			int ans = one;
+			//plus의 값들을 받아 ans에 할당한다.
+			for(int i=0; i<plus.size(); i+=2) {
+				ans += plus.get(i)*plus.get(i+1);
+			}
+			//minus의 값들을 받아 ans에 할당한다.
+			for(int i=0; i<minus.size(); i+=2) {
+				ans += minus.get(i)*minus.get(i+1);
+			}
+			System.out.println(ans);
+ 		}
+	
 
 }

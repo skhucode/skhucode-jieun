@@ -1,28 +1,7 @@
 package class01;
+import java.util.*;
 /*
 ATM 
-
-
-
-
-
-시간 제한
-
-메모리 제한
-
-제출
-
-정답
-
-맞은 사람
-
-정답 비율
-
-
-1 초 256 MB 9215 6431 5490 70.949% 
-
-
-
 
 
 문제
@@ -85,6 +64,24 @@ public class Code_11399 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		Scanner sc = new Scanner(System.in);
+		//n명의 사람 입력
+		int n = sc.nextInt();
+		//번호로 줄 세우는 것을 저장하는 배열 a
+		int[] a = new int[n];
+		//각 줄에 들어 있는 인원 수
+		for(int i=0; i<n; i++) {
+			a[i] = sc.nextInt();
+		}
+		//총 걸리는 시간을 sum
+		int sum=0;
+		//총 걸리는 시간의 최소값 ans
+		int ans=0;
+		for(int i=0; i<n; i++) {
+			sum +=a[i];
+			ans +=sum;
+		}
+		System.out.println(ans);
 	}
 
 }

@@ -1,4 +1,5 @@
 package class01;
+import java.util.*;
 /*
 대회 or 인턴 
 
@@ -74,7 +75,21 @@ public class Code_2875 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		//남자의 수를 m이라고 할당
+		int m = sc.nextInt();
+		//여자의 수를 n이라고 할당
+		int w = sc.nextInt();
+		// 총 인원 수를 k라고 정의
+		int k = sc.nextInt();
+		//K명의 인턴쉽에 참여해야하는 인원이 주어질 때 만들 수 있는 최대의 팀 수를 ans로 정의
+		int ans = 0;
+		while(m>=2 && w>=1 && m+w >= k+3) {
+			ans +=1;
+			m -= 2;
+			w -= 1;
+		}
+		System.out.println(ans);
 	}
 
 }
