@@ -1,4 +1,5 @@
 package class01;
+import java.util.*;
 /*
 동전0
 
@@ -26,8 +27,6 @@ package class01;
  
 
 첫째 줄에 K원을 만드는데 필요한 동전 개수의 최솟값을 출력한다.
-
-
 
 
 
@@ -95,6 +94,24 @@ public class Code_11047 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		Scanner sc = new Scanner(System.in);
+		//동전의 종류는 n개
+		int n = sc.nextInt();
+		//가치의 합 즉 합계
+		int k = sc.nextInt();
+		//동전 종류의 단위값을 배열로써 각 배열의 인덱스에 순차적으로 입려
+		int[] a = new int[n];
+		for( int i=0; i<n; i++) {
+			a[i] = sc.nextInt();
+		}
+		//동전 개수의 최소값
+		int ans = 0;
+		
+		for(int i=n-1; i>=0; i--) {
+			ans += k/a[i];
+			k %= a[i];
+		}
+		System.out.println(ans);
 	}
 
 }
