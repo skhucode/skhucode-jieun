@@ -1,4 +1,5 @@
 package class01;
+import java.util.*;
 /*
 롤러코스터 스페셜 저지 
 
@@ -86,10 +87,51 @@ package class01;
 출처
  */
 public class Code_2873 {
-
+	public static void append(StringBuilder s, char c, int cnt) {
+		for(int i=0; i<cnt; i++) {
+			s.append(c);
+		}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[][] a = new int[n][m];
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<m; j++) {
+				a[i][j] = sc.nextInt();
+			}
+		}
+		StringBuilder s = new StringBuilder();
+		if(n%2 == 1) {
+			for(int i=0; i<n; i++) {
+				if(i%2 ==0) {
+					append(s, 'R', m-1);
+				}
+			}else {
+				append(s,'L',m-1);
+				append(s,'D',1);
+			}
+		}
+	}else if(m%2 == 1) {
+		for(int j=0; j<m; j++) {
+			if(j%2 == 0) {
+				append(s,'D',n-1);
+			}if(j != m-1) {
+				append(s,'R',1);
+			}
+			else {
+				append(s,'U', n-1);
+				append(s,'R',1);
+			}
+		}
+	}else {
+		int x,y;
+		x=0;
+		y=1;
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<m; j++)
+		}
 	}
-
 }

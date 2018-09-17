@@ -1,4 +1,5 @@
 package class01;
+import java.util.*;
 /*
 병든 나이트 
 
@@ -138,7 +139,24 @@ public class Code_1783 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		//높이와 너비를 입력해서 정한다.
+		int height = sc.nextInt();
+		int width = sc.nextInt();
+		//height가 1일 경우 1를 그대로 출력한다.
+		if(height == 1) {
+			System.out.println(1);
+		}//height가 2일 경우 4와 (width+1)/2) 중 작은 수 를 출력한다.
+		else if(height == 2) {
+			System.out.println(Math.min(4,(width+1)/2));
+		}else if(height >= 3) {
+			if(width >= 7) {
+				System.out.println(width-2);
+			}else {
+				System.out.println(Math.min(4, width));
+			}
+		}
+		System.out.println();
 	}
 
 }

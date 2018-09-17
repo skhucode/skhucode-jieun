@@ -1,28 +1,7 @@
 package class01;
+import java.util.*;
 /*
 30 
-
-
-
-
-
-시간 제한
-
-메모리 제한
-
-제출
-
-정답
-
-맞은 사람
-
-정답 비율
-
-
-1 초 32 MB 6397 2215 1776 34.573% 
-
-
-
 
 
 문제
@@ -36,7 +15,7 @@ package class01;
 
 
 입력
- 
+ 	
 
 N을 입력받는다. N는 최대 10^5개의 숫자로 구성되어 있다.
 
@@ -100,7 +79,25 @@ public class Code_10610 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		//char배열 s에 각 인덱스에 값을 대입한다.
+		char[] s = sc.nextLine().toCharArray();
+		//총 합계를 sum이라고 정의한다.
+		int sum =0;
+		for(int i=0; i<s.length; i++) {
+			sum += s[i] - '0';
+		}
+		//배열 s를 정렬한다.
+		Arrays.sort(s);
+		//수의 첫번째 인덱스가 0이고 3으로 나눴을때 떨어진다면 출력한다.
+		if(s[0] == '0' && sum%3 == 0) {
+			for(int i=s.length-1; i>=0; i--) {
+				System.out.println(s[i]);
+			}
+			System.out.println();
+		}else {
+			System.out.println(-1);
+		}
 	}
 
 }

@@ -1,28 +1,7 @@
 package class01;
+import java.util.*;
 /*
 NMK 스페셜 저지 
-
-
-
-
-
-시간 제한
-
-메모리 제한
-
-제출
-
-정답
-
-맞은 사람
-
-정답 비율
-
-
-2 초 128 MB 1509 390 329 28.936% 
-
-
-
 
 
 문제
@@ -64,7 +43,50 @@ public class Code_1201 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		//1부터 n까지의 수
+		int n = sc.nextInt();
+		//증가 수열이 m
+		int m = sc.nextInt();
+		//최대 부분 감소 수열의 길이가 K인 수열
+		int k = sc.nextInt();
+		if(m+k-1 <= n && n <= m*k) {
+			int[] a = new int[n];
+			for(int i =0; i<n; i++) {
+				a[i] = i+1;
+			}
+			ArrayList<Integer> group = new ArrayList<Integer>();
+			group.add(0);
+			group.add(k);
+			n -= k;
+			m -= 1;
+			int group_size = m == 0? 1: n/m;
+			int r = m == 0 ? 0: n%m;
+			for(int i=0; i<m; i++) {
+				group.add(group.get(group.size()-1)+group_size + (r > 0 ? 1 : 0));
+				if(r > 0) {
+					r -= 1;
+				}
+			}
+			//group를 정렬한다.
+			for(int i=0; i<group.size()-1; i++) {
+				int begin = group.get(i);
+				int end = group.get(i+1)-1;
+				while(begin < end) {
+					int temp = a[begin];
+					a[begin] = a[end];
+					a[end] = temp;
+					begin += 1;
+					end -= 1;
+				}
+			}
+			for(int i=0; i<a.length; i++) {
+				System.out.println(a[i] + " ");
+			}
+			System.out.println();
+		}else {
+			System.out.println(-1);
+		}
 	}
 
 }
